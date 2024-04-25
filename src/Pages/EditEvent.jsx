@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 const EditEvent = () => {
     const { id } = useParams();
-
     const [event, setEvent] = useState({});
     
     useEffect(() => {
@@ -38,7 +37,7 @@ const EditEvent = () => {
     }
 
     return (
-        <div>
+        <div className="w-full flex justify-center flex-col items-center mx-auto">
             <h1>Edit Event</h1>
             <EventForm id={id} handleSubmit={handleSubmit} event={event} />
         </div>

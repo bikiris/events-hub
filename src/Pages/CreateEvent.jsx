@@ -20,8 +20,8 @@ const CreateEvent = () => {
   };
 
   return (
-    <div>
-      <h1>Create Event</h1>
+    <div className="w-full flex justify-center flex-col items-center mx-auto">
+      <h2>Create Event</h2>
         <EventForm handleSubmit={handleSubmit} />
     </div>
   );

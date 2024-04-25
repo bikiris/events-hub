@@ -29,12 +29,16 @@ const EventDetail = () => {
   };
 
   return (
-    <div className='p-4'>
+    <div className='w-full flex flex-col items-center'>
       {event && (
-        <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4'>
+        <div className='max-w-md  bg-white rounded-xl shadow-md overflow-hidden md:min-w-2xl m-4'>
           <div className='md:flex'>
             <div className='md:flex-shrink-0'>
-              {/* You can put an image here */}
+              <img
+                className='h-auto w-full object-cover md:w-48'
+                src='https://source.unsplash.com/random'
+                alt='image of event'
+              />
             </div>
             <div className='p-8'>
               <div className='uppercase tracking-wide text-sm text-indigo-500 font-semibold'>
@@ -53,18 +57,22 @@ const EventDetail = () => {
           </div>
         </div>
       )}
-      <button
-        onClick={handleUpvote}
-        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-      >
-        Upvote: {upvote}
-      </button>
-      <Link
-        to={`/edit/${id}`}
-        className='ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
-      >
-        Edit
-      </Link>
+      <div>
+        <button
+          onClick={handleUpvote}
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+        >
+          Upvote: {upvote}
+        </button>
+        <Link
+          to={`/edit/${id}`}
+          className='bg-green-500 hover:bg-green-700 text-white font-bold py-[0.6rem] px-4 rounded'
+          role="button"
+        >
+          Edit
+        </Link>
+      </div>
+
       <Comments id={id} />
     </div>
   );
