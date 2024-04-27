@@ -59,8 +59,8 @@ const Events = () => {
   };
 
   return (
-    <div className='w-full'>
-      <div className="flex items-center gap-4 mx-8 my-4">
+    <div className='w-full mx-auto max-w-7xl '>
+      <div className='flex items-center gap-4 mx-8 my-4 flex-wrap md:flex-nowrap'>
         <form className='w-full flex gap-4' onSubmit={handleSearch}>
           <input
             type='text'
@@ -86,7 +86,7 @@ const Events = () => {
         </button>
       </div>
 
-      <div className='grid grid-cols-4 w-full gap-4 mx-auto py-24 px-8'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-4 mx-auto py-24 px-8'>
         {filteredEvents &&
           filteredEvents.map((event) => (
             <EventCard
