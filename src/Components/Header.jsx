@@ -27,7 +27,6 @@ const Header = () => {
             Create Event
           </Link>
         </div>
-        <div className='hidden lg:flex lg:flex-1 lg:justify-end'></div>
       </nav>
     </header>
   );
