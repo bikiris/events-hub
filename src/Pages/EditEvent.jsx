@@ -23,17 +23,27 @@ const EditEvent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const eventData = e.target;
-    editEvent({
-      id: id,
-      name: eventData.eventName.value,
-      description: eventData.eventDescription.value,
-      street: eventData["street-address"].value,
-      city: eventData.city.value,
-      state: eventData.region.value,
-      zip: eventData["postal-code"].value,
-      date: eventData.eventDate.value,
-      time: eventData.eventTime.value,
-    });
+    const plaintextPassword = eventData.password.value;
+    const storedPassword = event.password;
+    const useremail = eventData.email.value;
+    const storedEmail = event.email;
+    if (plaintextPassword === storedPassword && useremail === storedEmail) {
+      editEvent({
+        id: id,
+        name: eventData.eventName.value,
+        description: eventData.eventDescription.value,
+        street: eventData["street-address"].value,
+        city: eventData.city.value,
+        state: eventData.region.value,
+        zip: eventData["postal-code"].value,
+        date: eventData.eventDate.value,
+        time: eventData.eventTime.value,
+        email: eventData.email.value,
+        password: eventData.password.value,
+      });
+    } else {
+      alert("Incorrect password. Please try again.");
+    }
   };
 
   return (

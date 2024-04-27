@@ -1,6 +1,7 @@
 import EventCard from "../Components/EventCard";
 import { getEvents } from "../Components/Client";
 import { useEffect, useState } from "react";
+import { format, formatDistanceToNow } from "date-fns";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -88,15 +89,22 @@ const Events = () => {
 
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-4 mx-auto py-24 px-8'>
         {filteredEvents &&
-          filteredEvents.map((event) => (
-            <EventCard
-              key={event.id}
-              id={event.id}
-              name={event.name}
-              description={event.description}
-              upvotes={event.popularity}
-            />
-          ))}
+          filteredEvents.map((event) => {
+            const date =
+              formatDistanceToNow(
+                format(new Date(event.created_at), "MM/dd/yyyy HH:mm")
+              ) + " ago";
+            console.log(typeof(date))
+            return (
+              <EventCard
+                key={event.id}
+                id={event.id}
+                name={event.name}
+                created_at={date}
+                upvotes={event.popularity}
+              />
+            );
+          })}
       </div>
     </div>
   );

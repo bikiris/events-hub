@@ -25,7 +25,7 @@ const getEventDetail = async (id) => {
     return data;
 }
 
-const createEvent = async ({name, description, street, city, state, zip, date, time}) => {
+const createEvent = async ({name, description, street, city, state, zip, date, time, email, password}) => {
     const { data, error } = await supabase
         .from('events')
         .insert([
@@ -37,7 +37,9 @@ const createEvent = async ({name, description, street, city, state, zip, date, t
                 state,
                 zip,
                 date,
-                time
+                time,
+                email,
+                password
             }
         ])
     if (error) {
@@ -58,7 +60,7 @@ const editEvent = async ({id, name, description, street, city, state, zip, date,
                 state,
                 zip,
                 date,
-                time
+                time,
             }
         ])
         .eq('id', id)

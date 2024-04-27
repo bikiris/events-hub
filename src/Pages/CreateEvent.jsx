@@ -14,6 +14,8 @@ const CreateEvent = () => {
       zip: eventData["postal-code"].value,
       date: eventData.eventDate.value,
       time: eventData.eventTime.value,
+      email: eventData.email.value,
+      password: eventData.password.value
     });
 
     console.log(eventData);
@@ -22,7 +24,7 @@ const CreateEvent = () => {
   return (
     <div className="w-full flex justify-center flex-col items-center mx-auto">
       <h2>Create Event</h2>
-        <EventForm handleSubmit={handleSubmit} />
+      <EventForm handleSubmit={handleSubmit} />
     </div>
   );
 };
