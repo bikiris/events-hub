@@ -8,13 +8,15 @@ const Events = () => {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [sortByUpvotesDesc, setSortByUpvotesDesc] = useState(false);
   const [sortByCreatedTimeDesc, setSortByCreatedTimeDesc] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getEvents();
-      console.log(data);
-      setEvents(data);
-      setFilteredEvents(data);
+      setIsLoading(true);
+      const events = await getEvents();
+      setEvents(events);
+      setFilteredEvents(events);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -88,7 +90,11 @@ const Events = () => {
       </div>
 
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-4 mx-auto py-24 px-8'>
-        {filteredEvents &&
+        {isLoading ? (
+          <div className='w-full flex justify-center items-center mx-auto'>
+            <div className='loader'></div>
+          </div>
+        ) : (
           filteredEvents.map((event) => {
             const date =
               formatDistanceToNow(
@@ -103,7 +109,8 @@ const Events = () => {
                 upvotes={event.popularity}
               />
             );
-          })}
+          })
+        )}
       </div>
     </div>
   );
