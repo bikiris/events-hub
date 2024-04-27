@@ -77,13 +77,13 @@ const Events = () => {
           onClick={handleSortByCreatedTime}
           className='max-h-12 whitespace-nowrap bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
         >
-          Sort by created time
+          Sort by created time {sortByCreatedTimeDesc ? "↓" : "↑"}
         </button>
         <button
           onClick={handleSortByUpvotes}
           className='max-h-12 whitespace-nowrap bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
         >
-          Sort by upvotes
+          Sort by upvotes {sortByUpvotesDesc ? "↓" : "↑"}
         </button>
       </div>
 
@@ -94,7 +94,6 @@ const Events = () => {
               formatDistanceToNow(
                 format(new Date(event.created_at), "MM/dd/yyyy HH:mm")
               ) + " ago";
-            console.log(typeof(date))
             return (
               <EventCard
                 key={event.id}

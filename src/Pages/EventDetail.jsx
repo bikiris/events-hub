@@ -57,7 +57,7 @@ const EventDetail = () => {
           </div>
         </div>
       )}
-      <div>
+      <div className='flex space-x-4'>
         <button
           onClick={handleUpvote}
           className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
@@ -67,7 +67,7 @@ const EventDetail = () => {
         <Link
           to={`/edit/${id}`}
           className='bg-green-500 hover:bg-green-700 text-white font-bold py-[0.6rem] px-4 rounded'
-          role="button"
+          role='button'
         >
           Edit
         </Link>
